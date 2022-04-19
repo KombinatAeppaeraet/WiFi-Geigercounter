@@ -11,18 +11,18 @@ Reducing the input voltage with some diodes to about 2.4V gave 600V output - per
  <img src="assets/hv.jpg">
 
 ## Pulse
-A particle crossing the geiger tube creates a high voltage/low current pulse across a 5M resistor. This is fed via a RC-circuit using a voltage divider to a NPN transistor which pulls down the output to ground. This is used to count the impulse from a ESP8266.
+A particle crossing the geiger tube creates a high voltage/low current pulse across a 5M resistor. The pulse is fed via a RC-circuit to a NPN transistor (using a voltage divider) which pulls the output down. This is used to count the impulse from a ESP8266.
 
  <img src="assets/pulse.jpg">
 
 ## Counter
-The [ESPHome home automation software](https://esphome.io/index.html) was leveraged to count the impulses. ESPHome software is deployed to ESP8266 (or ESP32 and other) nodes via WiFi. Node configuration is done entirely with YAML files over a web frontend. The nodes can be used over the web frontend or standalone via [http requests](https://esphome.io/web-api/index.html) enabling scripting. A generic ESPHome counter was used and polled with curl request from a cron script.
+The [ESPHome home automation software](https://esphome.io/index.html) was leveraged to count the impulses. ESPHome software is deployed to ESP8266 (or ESP32 and other) nodes via WiFi. Node configuration is done entirely with YAML files over a web frontend. The nodes can be used over the web frontend or standalone via [http requests](https://esphome.io/web-api/index.html) enabling scripting. A generic ESPHome counter node was used and is polled with curl requests from a cron script.
 
  <img src="assets/d1mini.jpg">
 
 ## Testing with Thorium
 ### Null rate
-To estabish a base line we need a null rate. There is always some background radiaoactivity which results in a null rate of about 12 counts/minute for my geiger counter. The null rate differs by location and by the the geiger tube model.
+To estabish a base line we need a null rate. There is always some background radiaoactivity which results in a null rate of about 12 counts/minute for my geiger tube. The null rate differs by location and by the the geiger tube model.
 
  <img src="assets/gnuplot.png">
 
